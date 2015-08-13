@@ -11,7 +11,10 @@ class Parser:
         for url in self.urls:
             print url
 
-            response = urllib2.urlopen(url)
+            opener = urllib2.build_opener()
+            opener.addheaders = [('User-agent', 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)')]
+            response = opener.open(url)
+
             html = response.read()
             soup = BeautifulSoup(html, 'html.parser')
 
