@@ -1,9 +1,12 @@
 import sys, getopt
 from parser import Parser
+import yaml
 
 def main():
     url = sys.argv[1]
-    parser = Parser(url)
+
+    config = yaml.load_all(open('config.yaml', 'r'))
+    parser = Parser(url, config)
 
     parser.run()
 
